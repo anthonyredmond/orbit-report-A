@@ -7,7 +7,7 @@
     <th>Orbit Type</th>
     <th>Launch Date</th>
   </tr>
-  <tr *ngFor="let satellite of satellites;index as indexOfelement; let rowClass=(indexOfelement % 2)?'evenRow':'oddRow'" ng-class="rowClass">
+  <tr *ngFor="let satellite of satellites;index as indexOfelement;">
     <td>{{satellite.name}}</td> 
     <td [class.warning]="satellite.shouldShowWarning">{{satellite.type}}</td> 
     <td>{{satellite.LaunchDate}}</td> 
