@@ -60,7 +60,7 @@ export class AppComponent {
       sat = list[idx];
       this.sourceList.push(new Satellite(sat.name, sat.type, sat.launchDate, sat.orbitType, sat.operational));  
     }
-    this.displayList=S.sourceList.slice(0);    
+    this.displayList=this.sourceList.slice(0);    
   }
 
   ngOnInit() {
