@@ -7,7 +7,7 @@
     <th>Orbit Type</th>
     <th>Launch Date</th>
   </tr>
-  <tr ng-class-odd="'oddRow'" *ngFor="let satellite of satellites">
+  <tr *ngFor="let satellite of satellites;let indexOfelement=index;" [class.oddRow]="(index%2==1)">
     <td>{{satellite.name}}</td> 
     <td [class.warning]="satellite.shouldShowWarning">{{satellite.type}}</td> 
     <td>{{satellite.LaunchDate}}</td> 
