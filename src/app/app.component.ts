@@ -29,10 +29,10 @@ export class AppComponent {
             sL.push(new Satellite(sat.name, sat.type, sat.launchDate, sat.orbitType, sat.operational));  
           }
           dL = sL.slice(0);
-        } else {
-          debugger();
-        }
-       }.bind(sL, dL));
+        }.bind(sL, dL));
+      } else {
+        debugger
+      }  
     }.bind(sL, dL));
  
  }
