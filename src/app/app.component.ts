@@ -15,6 +15,7 @@ export class AppComponent {
   constructor() {
     this.title = 'orbit-report-A';
     this.sourceList = [];
+    this.displayList = [];
     let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
  
     let sL = this.sourceList, dL = this.displayList;
