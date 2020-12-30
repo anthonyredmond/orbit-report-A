@@ -21,12 +21,17 @@ table {
     color: #fff
 }
 
+TR.oddRow {
+  background-Color: #3a1f1f;
+}
+
+TR.evenRow {
+
+}
+
 th, td {
     text-align: left;
     margin: 5px 10px;
     padding: 6px;
 }
 
-.oddRow {
-  background-Color: #3a1f1f;
-}
