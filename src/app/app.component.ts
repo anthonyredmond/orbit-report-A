@@ -21,18 +21,23 @@ export class AppComponent {
     let sL = this.sourceList, dL = this.displayList;
 
     window.fetch(satellitesUrl).then(function(response) {
-      if (response && response.json) {
-        response.json().then(function(data) {
-          let fetchedSatellites = data.satellites;          
-          for (let idx=0,list=fetchedSatellites,sat; idx<list.length; idx++) {
-            sat = list[idx];
-            sL.push(new Satellite(sat.name, sat.type, sat.launchDate, sat.orbitType, sat.operational));  
-          }
-          dL = sL.slice(0);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+        debugger
+      } else {
+        if (response && response.json) {
+          response.json().then(function(data) {
+            let fetchedSatellites = data.satellites;          
+            for (let idx=0,list=fetchedSatellites,sat; idx<list.length; idx++) {
+              sat = list[idx];
+              sL.push(new Satellite(sat.name, sat.type, sat.launchDate, sat.orbitType, sat.operational));  
+            }
+            dL = sL.slice(0);
+          }.bind(sL, dL));
         } else {
-          debugger();
+          dL=[];
         }
-       }.bind(sL, dL));
+      }  
     }.bind(sL, dL));
  
  }
