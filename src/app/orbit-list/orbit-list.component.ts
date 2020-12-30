@@ -6,10 +6,9 @@ import { Satellite } from '../satellite';
   styleUrls: ['./orbit-list.component.css']
 })
 export class OrbitListComponent implements OnInit {
-  constructor() { }
   @Input() satellites: Satellite[];
+  constructor() { };
 
-  ngOnInit() {
-  }
+  ngOnInit() { };
 
 }
