@@ -8,7 +8,7 @@
     <th>Launch Date</th>
   </tr>
   <tr *ngFor ="let satellite of satellites" ng-class-even=".oddRow">
-    <td>{{satellite.name}}</td> 
+    <td>{{satellite.name}}</td>
     <td [class.warning]="satellite.shouldShowWarning">{{satellite.type}}</td> 
     <td>{{satellite.LaunchDate}}</td> 
     <td>{{satellite.orbitType}}</td> 
