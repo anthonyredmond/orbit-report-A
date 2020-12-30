@@ -11,7 +11,9 @@ export class AppComponent {
   title: string;  
   sourceList: Satellite[];
   displayList: Satellite[];
-    
+  #loadingFetch: boolean = false;
+  #loadingFetchFallback: boolean = false;
+  #satellitesUrl:string;
   constructor() {
     this.title = 'orbit-report-A';
     this.sourceList = [];
