@@ -16,12 +16,31 @@ export class OrbitListComponent implements OnInit {
 
   sort(column: string): void {
     this.satellites.sort(function(a: Satellite, b: Satellite): number {
-       if(a[column] < b[column]) {
-          return -1;
-       } else if (a[column] > b[column]) {
-          return 1;
-       } else 
-           return 0;
+      let nA:number=0, nB:number=0, sA:string='', sB:string='';
+      switch(typeof column) {
+        case 'number':
+          nA = a[column];
+          nB = b[column];
+          if (nA<nB) {
+            return -1
+          } else if (nA>nB) {
+            return 1
+          } else 
+            return 0;
+          break;
+        case 'string':
+          sA = a[column];
+          sB = b[column];
+          if (sA<sB) {
+            return -1
+          } else if (sA>sB) {
+            return 1
+          } else 
+            return 0;
+          break;
+        default:
+          return 0;
+      }
     });
   }
 }
