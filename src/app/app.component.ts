@@ -21,6 +21,7 @@ export class AppComponent {
     this.#loadingFetch = false;
     this.#loadingFetchFallback = false;
     this.#satellitesUrl  = 'https://handlers.education.launchcode.org/static/satellites.json'; 
+    this.fetch();
   }
   
   fetch() {    
