@@ -19,8 +19,8 @@ export class OrbitListComponent implements OnInit {
       let nA:number=0, nB:number=0, sA:string='', sB:string='';
       switch(typeof column) {
         case 'number':
-          nA = a[column];
-          nB = b[column];
+          nA = parseFloat(a[column]);
+          nB = parseFloat(b[column]);
           if (nA<nB) {
             return -1
           } else if (nA>nB) {
@@ -29,8 +29,8 @@ export class OrbitListComponent implements OnInit {
             return 0;
           break;
         case 'string':
-          sA = a[column];
-          sB = b[column];
+          sA = String(a[column]);
+          sB = String(b[column]);
           if (sA<sB) {
             return -1
           } else if (sA>sB) {
