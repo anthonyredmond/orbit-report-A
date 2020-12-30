@@ -16,32 +16,50 @@ export class AppComponent {
     this.title = 'orbit-report-A';
     this.sourceList = [];
     this.displayList = [];
-    let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
- 
-    let sL = this.sourceList, dL = this.displayList;
+    this.#loadingFetch = false;
+    this.#loadingFetchFallback = false;
+    this.#satellitesUrl  = 'https://handlers.education.launchcode.org/static/satellites.json'; 
+  }
+  
+  fetch() {    
+    let S=this;
+    window.fetch(this.#satellitesUrl).then(function(response) {
+      if (!response || !('json' in response)) {
+        S.fetchFallback();
+        return
+      }
+      response.json().then(function(data) {
+        S.receive(data);
+      }.bind(S));
+    }.bind(S));
 
-    window.fetch(satellitesUrl).then(function(response) {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-        debugger
-      } else {
-        if (response && response.json) {
-          response.json().then(function(data) {
-            let fetchedSatellites = data.satellites;          
-            for (let idx=0,list=fetchedSatellites,sat; idx<list.length; idx++) {
-              sat = list[idx];
-              sL.push(new Satellite(sat.name, sat.type, sat.launchDate, sat.orbitType, sat.operational));  
-            }
-            dL = sL.slice(0);
-          }.bind(sL, dL));
-        } else {
-          dL=[];
-          debugger
-        }
-      }  
-    }.bind(sL, dL));
- 
- }
+  }
+
+  fetchFallback() {
+    if (this.#loadingFetchFallback)
+      return false;  
+    let xmlhttp = new XMLHttpRequest(), S=this;
+    this.#loadingFetchFallback = true;
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        S.#loadingFetchFallback = false;
+        let data = JSON.parse(this.responseText);
+        S.receive(data)
+      }
+    }.bind(S);
+    xmlhttp.open("GET", this.#satellitesUrl, true);
+    xmlhttp.send();    
+    
+  }
+
+  receive(data) {
+    let fetchedSatellites = data.satellites;          
+    for (let idx=0,list=fetchedSatellites,sat; idx<list.length; idx++) {
+      sat = list[idx];
+      this.sourceList.push(new Satellite(sat.name, sat.type, sat.launchDate, sat.orbitType, sat.operational));  
+    }
+    this.displayList=S.sourceList.slice(0);    
+  }
 
   ngOnInit() {
   }
