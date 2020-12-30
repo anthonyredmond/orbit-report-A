@@ -10,8 +10,8 @@
   <tr *ngFor="let satellite of satellites;index as indexOfelement;">
     <td>{{satellite.name}}</td> 
     <td [class.warning]="satellite.shouldShowWarning">{{satellite.type}}</td> 
-    <td>{{satellite.LaunchDate}}</td> 
     <td>{{satellite.orbitType}}</td> 
     <td>{{satellite.operational}}</td> 
+    <td>{{satellite.launchDate}}</td> 
   </tr> 
 </table>
