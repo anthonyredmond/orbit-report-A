@@ -7,7 +7,7 @@
     <th>Orbit Type</th>
     <th>Launch Date</th>
   </tr>
-  <tr ng-class-odd="'oddRow'" *ngFor ="let satellite of satellites">
+  <tr ng-class-odd="'oddRow'" ngRepeat ="satellite in satellites">
     <td>{{satellite.name}}</td> 
     <td [class.warning]="satellite.shouldShowWarning">{{satellite.type}}</td> 
     <td>{{satellite.LaunchDate}}</td> 
