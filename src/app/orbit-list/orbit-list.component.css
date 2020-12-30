@@ -8,12 +8,12 @@ sortable {
 }
 
 table {
-  color: rgb(122, 10, 10);
+  color: rgb(221, 208, 208);
   border-radius: 5px;
   overflow: hidden;
   margin: 12px 0;
   min-width: 300px;
-  background: #910505;
+  background: #110808;
 }
 
 .header-row {
@@ -26,4 +26,3 @@ th, td {
     margin: 5px 10px;
     padding: 6px;
 }
-
